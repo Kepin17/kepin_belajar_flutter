@@ -4,14 +4,16 @@ class Detailproduct extends StatefulWidget {
   final String? noBarcode;
   final String? nama;
   final double? harga;
-  final String? deskripsi;
+  final int? stokBarang;
+  final String? pabrik;
 
   const Detailproduct({
     super.key,
     this.noBarcode,
     this.nama,
     this.harga,
-    this.deskripsi,
+    this.stokBarang,
+    this.pabrik,
   });
 
   @override
@@ -31,7 +33,8 @@ class _DetailproductState extends State<Detailproduct> {
             Text("Barcode: ${widget.noBarcode}"),
             Text("Nama: ${widget.nama}"),
             Text("Harga: ${widget.harga}"),
-            Text("Deskripsi: ${widget.deskripsi}"),
+            Text("Stok Barang: ${widget.stokBarang}"),
+            Text("Pabrik: ${widget.pabrik}"),
           ],
         ),
       ),

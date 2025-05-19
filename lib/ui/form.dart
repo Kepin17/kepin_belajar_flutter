@@ -1,4 +1,4 @@
-import 'package:first_app_king/ui/detailProduct.dart';
+import 'package:first_app_king/ui/detail.dart';
 import 'package:flutter/material.dart';
 
 class ProductForm extends StatefulWidget {
@@ -12,7 +12,8 @@ class _MyWidgetState extends State<ProductForm> {
   final TextEditingController _noBarcodeController = TextEditingController();
   final TextEditingController _namaController = TextEditingController();
   final TextEditingController _hargaController = TextEditingController();
-  final TextEditingController _deskripsiController = TextEditingController();
+  final TextEditingController _stockController = TextEditingController();
+  final TextEditingController _pabrikan = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,16 +64,10 @@ class _MyWidgetState extends State<ProductForm> {
                     ),
                   ],
                 ),
-                IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
               ],
             ),
 
-            const TextField(
+            TextField(
               controller: _noBarcodeController,
               decoration: InputDecoration(
                 labelText: 'No. Barcode',
@@ -85,7 +80,8 @@ class _MyWidgetState extends State<ProductForm> {
               ),
             ),
 
-            const TextField(
+            TextField(
+              controller: _namaController,
               decoration: InputDecoration(
                 labelText: 'Nama Produk',
                 hintText: 'Masukkan nama produk',
@@ -96,7 +92,8 @@ class _MyWidgetState extends State<ProductForm> {
                 ),
               ),
             ),
-            const TextField(
+            TextField(
+              controller: _hargaController,
               decoration: InputDecoration(
                 labelText: 'Harga Produk',
                 hintText: 'Masukkan harga produk',
@@ -106,10 +103,23 @@ class _MyWidgetState extends State<ProductForm> {
                 ),
               ),
             ),
-            const TextField(
+            TextField(
+              controller: _stockController,
               decoration: InputDecoration(
-                labelText: 'Deskripsi Produk',
-                hintText: 'Masukkan deskripsi produk',
+                labelText: 'Stock Produk',
+                hintText: 'Masukkan Stock produk',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  borderSide: BorderSide(color: Colors.blue, width: 2),
+                ),
+              ),
+            ),
+
+            TextField(
+              controller: _pabrikan,
+              decoration: InputDecoration(
+                labelText: 'Parbikan',
+                hintText: 'Masukkan Asal produk',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   borderSide: BorderSide(color: Colors.blue, width: 2),
@@ -122,7 +132,8 @@ class _MyWidgetState extends State<ProductForm> {
                   String noBarcode = _noBarcodeController.text;
                   String nama = _namaController.text;
                   double? harga = double.tryParse(_hargaController.text);
-                  String deskripsi = _deskripsiController.text;
+                  int stok_barang = int.tryParse(_stockController.text) ?? 0;
+                  String pabrik = _pabrikan.text;
 
                   Navigator.push(
                     context,
@@ -132,7 +143,8 @@ class _MyWidgetState extends State<ProductForm> {
                             noBarcode: noBarcode,
                             nama: nama,
                             harga: harga,
-                            deskripsi: deskripsi,
+                            stokBarang: stok_barang,
+                            pabrik: pabrik,
                           ),
                     ),
                   );
